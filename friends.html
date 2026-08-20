@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>40. Geburtstag (Friends) | Daniel Temperli | Seegüetli Horgen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Lato', sans-serif; background-color: #050A14; color: #E2E8F0; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .text-gold { color: #D4AF37; }
+        .bg-gold { background-color: #D4AF37; }
+        .border-gold { border-color: #D4AF37; }
+        .hero-bg {
+            background-image: linear-gradient(rgba(5, 10, 20, 0.5), rgba(5, 10, 20, 0.7)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .glass {
+            background: rgba(7, 16, 31, 0.75);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+        .btn-party { animation: pulse-gold 2s infinite; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="hero-bg min-h-screen flex flex-col justify-center items-center text-center p-6 relative">
+        <div class="glass z-10 p-10 rounded-2xl shadow-2xl max-w-3xl">
+            <p class="text-gold uppercase tracking-widest text-sm mb-3 font-light">Save the Date &bull; Friends</p>
+            <h1 class="text-5xl md:text-7xl text-white mb-4 leading-tight">
+                Daniel wird <span class="text-gold">40</span>!
+            </h1>
+            <p class="text-xl text-gray-200 font-light mb-1">Ich lade dich ein zur grossen Party im</p>
+            <h2 class="text-3xl text-gold font-bold mb-8">Seegüetli Horgen</h2>
+            <div class="border-t border-b border-gold py-4 mb-8">
+                <span class="text-3xl text-white font-bold tracking-wider">31. Juli 2027</span>
+            </div>
+            <a href="#rsvp" class="inline-block bg-gold text-[#050A14] text-lg font-bold uppercase px-10 py-4 rounded-full tracking-widest hover:bg-white transition duration-300 btn-party">
+                Ja, ich bin dabei!
+            </a>
+        </div>
+        <div class="absolute bottom-10 z-10 animate-bounce">
+            <svg class="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </div>
+    </header>
+
+    <main id="rsvp" class="py-24 px-6 bg-[#0A1428] flex flex-col items-center">
+        <div class="max-w-xl w-full bg-[#050A14] p-10 rounded-3xl shadow-2xl border border-gold/30">
+            <h3 class="text-3xl text-white text-center mb-8">Anmeldung Friends</h3>
+            <form id="rsvpForm" class="space-y-6">
+                <input type="hidden" id="eventType" value="Friends - 31.07.2027">
+                <div class="grid md:grid-cols-2 gap-4">
+                    <input type="text" id="vorname" placeholder="Dein Vorname" required class="bg-[#112240] p-4 rounded-lg border border-gold/20 focus:border-gold focus:ring-1 focus:ring-gold outline-none text-white placeholder:text-gray-500">
+                    <input type="text" id="nachname" placeholder="Dein Nachname" required class="bg-[#112240] p-4 rounded-lg border border-gold/20 focus:border-gold focus:ring-1 focus:ring-gold outline-none text-white placeholder:text-gray-500">
+                </div>
+                <input type="email" id="email" placeholder="E-Mail Adresse" required class="w-full bg-[#112240] p-4 rounded-lg border border-gold/20 focus:border-gold focus:ring-1 focus:ring-gold outline-none text-white placeholder:text-gray-500">
+                
+                <div class="border-t border-b border-gold/20 py-4 space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-300">Begleitpersonen / Partner</span>
+                        <button type="button" onclick="addCompanionField()" class="text-xs bg-gold/20 text-gold border border-gold/40 px-3 py-1 rounded-full hover:bg-gold hover:text-[#050A14] transition">+ Weitere Person</button>
+                    </div>
+                    <div id="companionsContainer" class="space-y-3"></div>
+                </div>
+                
+                <input type="text" id="essen" placeholder="Allergien / Unverträglichkeiten (optional)" class="w-full bg-[#112240] p-4 rounded-lg border border-gold/20 focus:border-gold focus:ring-1 focus:ring-gold outline-none text-white placeholder:text-gray-500">
+                <button type="submit" id="submitBtn" class="w-full bg-gold text-[#050A14] font-bold py-4 rounded-xl text-lg uppercase tracking-widest hover:bg-white transition duration-300 shadow-lg">
+                    Plätzchen reservieren
+                </button>
+                <p class="text-xs text-gray-500 text-center pt-2">Freue mich auf dich!</p>
+            </form>
+        </div>
+    </main>
+
+    <footer class="py-12 text-center bg-[#050A14] text-gray-600 border-t border-gold/10">
+        <p class="text-lg text-gold font-bold">40 Jahre Daniel Temperli</p>
+        <p class="text-sm mt-2">Villa Seeguetli &bull; Seestrasse &bull; Horgen</p>
+    </footer>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxxWrj97XYFrMwLO9sAtvkiCdS6L5lvlDoG_W0hiIujuqnMnV_aFUnMuU_4rBgfP9oxVA/exec';
+
+        function addCompanionField() {
+            const container = document.getElementById('companionsContainer');
+            const div = document.createElement('div');
+            div.className = "flex gap-2 items-center companion-row";
+            div.innerHTML = `
+                <input type="text" placeholder="Vorname" class="comp-first w-1/2 bg-[#112240] p-3 rounded-lg border border-gold/20 text-white text-sm outline-none">
+                <input type="text" placeholder="Nachname" class="comp-last w-1/2 bg-[#112240] p-3 rounded-lg border border-gold/20 text-white text-sm outline-none">
+                <button type="button" onclick="this.parentElement.remove()" class="text-red-400 hover:text-red-200 px-2 font-bold text-lg">&times;</button>
+            `;
+            container.appendChild(div);
+        }
+
+        const form = document.getElementById('rsvpForm');
+        const btn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            btn.disabled = true;
+            btn.innerText = "Wird gesendet...";
+
+            const companionRows = document.querySelectorAll('.companion-row');
+            let companionsList = [];
+            companionRows.forEach(row => {
+                const f = row.querySelector('.comp-first').value.trim();
+                const l = row.querySelector('.comp-last').value.trim();
+                if(f || l) { companionsList.push(`${f} ${l}`.trim()); }
+            });
+
+            const data = {
+                event: document.getElementById('eventType').value,
+                vorname: document.getElementById('vorname').value,
+                nachname: document.getElementById('nachname').value,
+                email: document.getElementById('email').value,
+                begleitung: companionsList.join(', '),
+                essen: document.getElementById('essen').value
+            };
+
+            fetch(scriptURL, { 
+                method: 'POST', 
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data) 
+            })
+            .then(() => {
+                alert('Vielen Dank! Deine Anmeldung ist eingegangen.');
+                form.reset();
+                document.getElementById('companionsContainer').innerHTML = '';
+                btn.disabled = false;
+                btn.innerText = "Plätzchen reservieren";
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert('Da ist etwas schiefgelaufen. Bitte versuche es noch einmal.');
+                btn.disabled = false;
+                btn.innerText = "Plätzchen reservieren";
+            });
+        });
+    </script>
+</body>
+</html>
